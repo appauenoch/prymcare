@@ -229,10 +229,35 @@
 
   <section class="section categories" id="categories">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Shop by category</span>
-        <h2>Every essential, organised around real health goals.</h2>
-        <p>From daily nutrition to targeted support, our range is grouped the way your body actually needs it — so you spend less time browsing and more time feeling better.</p>
+      <div class="categories-intro">
+        <div class="section-head reveal" style="margin-bottom:0;">
+          <span class="eyebrow">Shop by category</span>
+          <h2>Every essential, organised around real health goals.</h2>
+          <p>From daily nutrition to targeted support, our range is grouped the way your body actually needs it — so you spend less time browsing and more time feeling better.</p>
+        </div>
+        <div class="categories-illustration reveal" aria-hidden="true">
+          <svg viewBox="0 0 320 260">
+            <ellipse cx="160" cy="235" rx="130" ry="14" fill="rgba(14,61,40,0.08)"/>
+            <rect x="55" y="110" width="46" height="115" rx="10" fill="#2F8F52"/>
+            <rect x="63" y="90" width="30" height="24" rx="5" fill="#0E3D28"/>
+            <path d="M70 150h20M70 165h20M70 180h12" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+            <rect x="118" y="70" width="58" height="155" rx="12" fill="#8CC63F"/>
+            <ellipse cx="147" cy="70" rx="29" ry="9" fill="#4CAE6C"/>
+            <circle cx="147" cy="120" r="9" fill="#fff" opacity="0.85"/>
+            <circle cx="132" cy="150" r="6" fill="#fff" opacity="0.65"/>
+            <circle cx="162" cy="155" r="7" fill="#fff" opacity="0.65"/>
+            <path d="M190 130c0-30 46-30 46 0v95h-46z" fill="#E8A23A"/>
+            <rect x="200" y="120" width="26" height="18" rx="4" fill="#C97F1F"/>
+            <g transform="translate(255,60)">
+              <path transform="rotate(-25)" d="M0,0 C-10,-35 -5,-70 0,-100 C5,-70 10,-35 0,0 Z" fill="#0E3D28"/>
+              <path transform="rotate(5)" d="M0,0 C-9,-40 -4,-75 0,-105 C4,-75 9,-40 0,0 Z" fill="#4CAE6C"/>
+              <path transform="rotate(32)" d="M0,0 C-9,-33 -4,-65 0,-92 C4,-65 9,-33 0,0 Z" fill="#8CC63F"/>
+            </g>
+            <circle cx="45" cy="60" r="6" fill="#E8A23A" opacity="0.5"/>
+            <circle cx="90" cy="40" r="4" fill="#8CC63F" opacity="0.6"/>
+            <circle cx="280" cy="180" r="8" fill="#4CAE6C" opacity="0.4"/>
+          </svg>
+        </div>
       </div>
       <div class="cat-grid">
 
@@ -328,6 +353,7 @@
   </section>
 
   <section class="section journey" id="journey">
+    <svg class="wave-divider wave-top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0,32L60,26.7C120,21,240,11,360,16C480,21,600,43,720,48C840,53,960,43,1080,34.7C1200,27,1320,21,1380,18.7L1440,16L1440,0L0,0Z"></path></svg>
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">How it works</span>
@@ -335,12 +361,25 @@
         <p>No guesswork. We walk with you from your very first question to a routine that actually fits your life.</p>
       </div>
       <div class="j-grid">
-        <div class="j-card reveal"><span class="j-num">STEP 01</span><h3>Tell us your goal</h3><p>Message us on WhatsApp or <a href="contact.html" style="color:var(--sprout); font-weight:700;">fill the contact form</a> — share what you're hoping to improve.</p></div>
-        <div class="j-card reveal"><span class="j-num">STEP 02</span><h3>Get a personal plan</h3><p>We recommend a simple, honest combination of <a href="shop.html" style="color:var(--sprout); font-weight:700;">products</a> — never more than you need.</p></div>
-        <div class="j-card reveal"><span class="j-num">STEP 03</span><h3>We deliver, you begin</h3><p>Fast delivery across Accra and nationwide, with clear usage guidance included.</p></div>
-        <div class="j-card reveal"><span class="j-num">STEP 04</span><h3>Ongoing support</h3><p>We check in, answer questions, and adjust your plan — see what real customers say in our <a href="#testimonials" style="color:var(--sprout); font-weight:700;">testimonials</a>.</p></div>
+        <div class="j-card reveal">
+          <div class="j-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <span class="j-num">STEP 01</span><h3>Tell us your goal</h3><p>Message us on WhatsApp or <a href="contact.html" style="color:var(--sprout); font-weight:700;">fill the contact form</a> — share what you're hoping to improve.</p>
+        </div>
+        <div class="j-card reveal">
+          <div class="j-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <span class="j-num">STEP 02</span><h3>Get a personal plan</h3><p>We recommend a simple, honest combination of <a href="shop.html" style="color:var(--sprout); font-weight:700;">products</a> — never more than you need.</p>
+        </div>
+        <div class="j-card reveal">
+          <div class="j-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="7" width="15" height="13" rx="2"/><path d="M16 11h3l4 4v5h-7"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/></svg></div>
+          <span class="j-num">STEP 03</span><h3>We deliver, you begin</h3><p>Fast delivery across Accra and nationwide, with clear usage guidance included.</p>
+        </div>
+        <div class="j-card reveal">
+          <div class="j-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 000-7.8z"/></svg></div>
+          <span class="j-num">STEP 04</span><h3>Ongoing support</h3><p>We check in, answer questions, and adjust your plan — see what real customers say in our <a href="#testimonials" style="color:var(--sprout); font-weight:700;">testimonials</a>.</p>
+        </div>
       </div>
     </div>
+    <svg class="wave-divider wave-bottom" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0,32L60,26.7C120,21,240,11,360,16C480,21,600,43,720,48C840,53,960,43,1080,34.7C1200,27,1320,21,1380,18.7L1440,16L1440,60L0,60Z"></path></svg>
   </section>
 
   <section class="section testimonials" id="testimonials">
@@ -480,7 +519,18 @@
   <section class="section" style="padding:60px 0;">
     <div class="container">
       <div class="cta-banner reveal">
+        <svg class="cta-illustration" viewBox="0 0 200 160" aria-hidden="true">
+          <path d="M20 140h160" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>
+          <rect x="35" y="95" width="22" height="45" rx="3" fill="rgba(140,198,63,0.5)"/>
+          <rect x="75" y="70" width="22" height="70" rx="3" fill="rgba(140,198,63,0.7)"/>
+          <rect x="115" y="45" width="22" height="95" rx="3" fill="#8CC63F"/>
+          <g transform="translate(126,30)">
+            <path transform="rotate(-20)" d="M0,0 C-7,-22 -3,-42 0,-58 C3,-42 7,-22 0,0 Z" fill="#fff" opacity="0.9"/>
+            <path transform="rotate(15)" d="M0,0 C-6,-24 -2,-46 0,-62 C2,-46 6,-24 0,0 Z" fill="#E8A23A"/>
+          </g>
+        </svg>
         <div>
+          <div class="cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.1-4-4L3 15.5"/></svg></div>
           <h2>Turn your wellness passion into your own business.</h2>
           <p>Join PrymCare Health as a registered distribution partner — training, mentorship and marketing support included.</p>
         </div>
@@ -494,9 +544,15 @@
 
 <section class="newsletter">
   <div class="container nl-grid">
-    <div>
-      <h3>Get simple wellness tips in your inbox.</h3>
-      <p>One short email a month. No spam, just things worth trying.</p>
+    <div style="display:flex; gap:16px; align-items:flex-start;">
+      <div class="nl-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18v14H3zM3 5l9 7 9-7"/></svg>
+        <svg class="nl-icon-leaf" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 3 6 3 12c0 5 4 9 9 9 1-5 1-9 1-9s4 0 9-1c0-5-4-9-9-9z"/></svg>
+      </div>
+      <div>
+        <h3>Get simple wellness tips in your inbox.</h3>
+        <p>One short email a month. No spam, just things worth trying.</p>
+      </div>
     </div>
     <form class="nl-form" id="nlForm">
       <input type="email" placeholder="Your email address" required aria-label="Email address">
