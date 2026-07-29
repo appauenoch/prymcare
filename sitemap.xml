@@ -366,6 +366,36 @@
     <priority>0.65</priority>
   </url>
   <url>
+    <loc>https://www.prymcare.com/blog/bee-hive-glossary.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.prymcare.com/blog/afternoon-energy-crash.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.prymcare.com/blog/joint-pain-and-ageing.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.prymcare.com/blog/truth-about-detox.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.prymcare.com/blog/skin-hydration-101.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.prymcare.com/blog/habits-supporting-fertility.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
     <loc>https://www.prymcare.com/partner.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
