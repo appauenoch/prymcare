@@ -661,6 +661,8 @@ footer a:hover{color:#fff;}
 
 /* ============ WELLNESS COMBO PAGES ============ */
 .combo-hero{padding:44px 0 8px; background:radial-gradient(600px 380px at 90% -20%, rgba(140,198,63,0.2), transparent 60%); text-align:center;}
+.combo-illustration{max-width:280px; margin:28px auto 0;}
+.combo-illustration svg{width:100%; height:auto;}
 .combo-hero .system-badge{display:inline-flex; align-items:center; gap:8px; background:rgba(47,143,82,0.1); color:var(--aloe); font-weight:800; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; padding:8px 16px; border-radius:100px; margin-bottom:16px;}
 .combo-hero .system-badge svg{width:15px; height:15px;}
 .combo-hero h1{font-size:clamp(28px,4.4vw,44px); line-height:1.15;}
@@ -679,14 +681,16 @@ footer a:hover{color:#fff;}
 .combo-why h2{font-size:24px; margin-bottom:22px;}
 .combo-role-list{display:flex; flex-direction:column; gap:18px;}
 .combo-role{display:flex; gap:16px; align-items:flex-start; padding:18px 20px; background:var(--linen); border-radius:16px;}
-.combo-role .role-num{flex-shrink:0; width:34px; height:34px; border-radius:50%; background:var(--canopy); color:#fff; font-family:var(--ff-display); font-weight:700; font-size:14px; display:flex; align-items:center; justify-content:center;}
+.combo-role .role-num{flex-shrink:0; width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center;}
+.combo-role .role-num svg{width:18px; height:18px;}
 .combo-role .role-txt b{display:block; color:var(--canopy-2); font-size:15px; margin-bottom:4px;}
 .combo-role .role-txt p{font-size:13.5px; color:var(--ink-soft); line-height:1.6;}
 
 .routine-timeline{display:flex; flex-direction:column; gap:0; margin-top:22px;}
-.routine-step{display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--line);}
+.routine-step{display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--line); align-items:flex-start;}
 .routine-step:last-child{border-bottom:none;}
-.routine-step .time-badge{flex-shrink:0; width:88px; font-weight:800; font-size:12.5px; color:var(--aloe); text-transform:uppercase; letter-spacing:0.04em; padding-top:2px;}
+.routine-step .time-badge{flex-shrink:0; width:100px; font-weight:800; font-size:12.5px; color:var(--aloe); text-transform:uppercase; letter-spacing:0.04em; display:flex; align-items:center; gap:8px;}
+.routine-step .time-badge svg{width:18px; height:18px; flex-shrink:0;}
 .routine-step .step-txt{font-size:14.5px; color:var(--ink); line-height:1.6;}
 .routine-step .step-txt b{color:var(--canopy-2);}
 
