@@ -596,6 +596,10 @@ footer a:hover{color:#fff;}
 .prod-grid{display:grid; grid-template-columns:1fr; gap:22px;}
 @media(min-width:640px){ .prod-grid{grid-template-columns:repeat(2,1fr);} }
 @media(min-width:980px){ .prod-grid{grid-template-columns:repeat(3,1fr);} }
+/* Inside the narrower combo-page article column, cap at 2 columns so cards never get cramped */
+.article-body .prod-grid{grid-template-columns:1fr;}
+@media(min-width:560px){ .article-body .prod-grid{grid-template-columns:repeat(2,1fr);} }
+@media(min-width:980px){ .article-body .prod-grid{grid-template-columns:repeat(2,1fr);} }
 .prod-card{border:1px solid var(--line); border-radius:20px; overflow:hidden; background:var(--linen); display:flex; flex-direction:column; transition:transform .3s ease, box-shadow .3s ease;}
 .prod-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
 .prod-media{aspect-ratio:1; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; background:#fff;}
@@ -620,3 +624,50 @@ footer a:hover{color:#fff;}
 .stat-block .ic svg{width:24px; height:24px; color:var(--sprout);}
 .stat-block b{display:block; font-family:var(--ff-display); font-size:clamp(28px,4vw,38px); font-weight:700; color:#fff;}
 .stat-block span{display:block; margin-top:6px; font-size:12.5px; color:rgba(255,255,255,0.68); font-weight:600; letter-spacing:0.02em;}
+
+/* ============ WELLNESS COMBO PAGES ============ */
+.combo-hero{padding:44px 0 8px; background:radial-gradient(600px 380px at 90% -20%, rgba(140,198,63,0.2), transparent 60%); text-align:center;}
+.combo-hero .system-badge{display:inline-flex; align-items:center; gap:8px; background:rgba(47,143,82,0.1); color:var(--aloe); font-weight:800; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; padding:8px 16px; border-radius:100px; margin-bottom:16px;}
+.combo-hero .system-badge svg{width:15px; height:15px;}
+.combo-hero h1{font-size:clamp(28px,4.4vw,44px); line-height:1.15;}
+.combo-hero p.lead{margin:16px auto 0; color:var(--ink-soft); font-size:17px; max-width:620px;}
+
+.combo-summary{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px;
+  background:var(--canopy); color:#fff; border-radius:var(--radius); padding:26px 30px; margin:36px 0;
+}
+.combo-summary .csum-info{display:flex; flex-direction:column; gap:4px;}
+.combo-summary .csum-info span{font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:rgba(255,255,255,0.6); font-weight:700;}
+.combo-summary .csum-info b{font-family:var(--ff-display); font-size:28px; color:#fff;}
+.combo-summary .csum-info small{font-size:12.5px; color:rgba(255,255,255,0.7);}
+
+.combo-why{margin-top:56px;}
+.combo-why h2{font-size:24px; margin-bottom:22px;}
+.combo-role-list{display:flex; flex-direction:column; gap:18px;}
+.combo-role{display:flex; gap:16px; align-items:flex-start; padding:18px 20px; background:var(--linen); border-radius:16px;}
+.combo-role .role-num{flex-shrink:0; width:34px; height:34px; border-radius:50%; background:var(--canopy); color:#fff; font-family:var(--ff-display); font-weight:700; font-size:14px; display:flex; align-items:center; justify-content:center;}
+.combo-role .role-txt b{display:block; color:var(--canopy-2); font-size:15px; margin-bottom:4px;}
+.combo-role .role-txt p{font-size:13.5px; color:var(--ink-soft); line-height:1.6;}
+
+.routine-timeline{display:flex; flex-direction:column; gap:0; margin-top:22px;}
+.routine-step{display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--line);}
+.routine-step:last-child{border-bottom:none;}
+.routine-step .time-badge{flex-shrink:0; width:88px; font-weight:800; font-size:12.5px; color:var(--aloe); text-transform:uppercase; letter-spacing:0.04em; padding-top:2px;}
+.routine-step .step-txt{font-size:14.5px; color:var(--ink); line-height:1.6;}
+.routine-step .step-txt b{color:var(--canopy-2);}
+
+.combo-index-grid{display:grid; grid-template-columns:1fr; gap:24px;}
+@media(min-width:700px){ .combo-index-grid{grid-template-columns:repeat(2,1fr);} }
+@media(min-width:1080px){ .combo-index-grid{grid-template-columns:repeat(3,1fr);} }
+.combo-card{background:#fff; border:1px solid var(--line); border-radius:20px; overflow:hidden; display:flex; flex-direction:column; transition:transform .3s ease, box-shadow .3s ease; text-decoration:none; color:inherit;}
+.combo-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
+.combo-card-media{aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; position:relative;}
+.combo-card-media svg{width:30%; height:30%;}
+.combo-card-body{padding:20px 20px 24px; display:flex; flex-direction:column; gap:8px; flex:1;}
+.combo-card-body .system-tag{align-self:flex-start; font-size:10.5px; font-weight:800; color:var(--aloe); text-transform:uppercase; letter-spacing:0.05em; background:rgba(47,143,82,0.1); padding:4px 10px; border-radius:100px;}
+.combo-card-body h3{font-size:17px; margin-top:2px;}
+.combo-card-body p{font-size:13px; color:var(--ink-soft); line-height:1.55; flex:1;}
+.combo-card-body .combo-products-line{font-size:12px; color:var(--ink-soft); font-weight:600;}
+.combo-card-footer{display:flex; align-items:center; justify-content:space-between; margin-top:10px; padding-top:14px; border-top:1px solid var(--line);}
+.combo-card-footer b{font-family:var(--ff-display); font-size:16px; color:var(--canopy-2);}
+.combo-card-footer span{font-size:12.5px; font-weight:800; color:var(--canopy);}
