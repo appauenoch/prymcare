@@ -287,6 +287,7 @@ footer a:hover{color:#fff;}
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="shop.html" class="active">Shop</a>
+      <a href="combos.html">Combos</a>
       <a href="blog.html">Blog</a>
       <a href="partner.html">Partner</a>
       <a href="faq.html">FAQ</a>
@@ -307,6 +308,7 @@ footer a:hover{color:#fff;}
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="shop.html">Shop</a>
+    <a href="combos.html">Combos</a>
     <a href="blog.html">Blog</a>
     <a href="partner.html">Partner</a>
     <a href="faq.html">FAQ</a>
@@ -2003,6 +2005,7 @@ footer a:hover{color:#fff;}
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="index.html#testimonials">Testimonials</a></li>
+          <li><a href="combos.html">Wellness Combos</a></li>
           <li><a href="blog.html">Wellness Library</a></li>
           <li><a href="partner.html">Become a Partner</a></li>
           <li><a href="faq.html">FAQs</a></li>
@@ -2349,10 +2352,11 @@ document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('cl
 document.getElementById('shopSearch').addEventListener('input', (e) => { searchTerm = e.target.value.trim().toLowerCase(); applyProductFilter(); });
 document.getElementById('sortSelect').addEventListener('change', (e) => { sortMode = e.target.value; applySort(); applyProductFilter(); });
 
-/* Deep link support: shop.html?cat=nutrition */
+/* Deep link support: shop.html?cat=nutrition, shop.html?combo=id1,id2,id3 */
 const urlParams = new URLSearchParams(window.location.search);
 const catParam = urlParams.get('cat');
 if(catParam && CATS[catParam]){ activeFilter = catParam; }
+const comboParam = urlParams.get('combo');
 
 /* ---------- Cart logic ---------- */
 function saveCart(){ try{ localStorage.setItem('prymcare_cart', JSON.stringify(cart)); }catch(e){} }
@@ -2623,6 +2627,23 @@ applySort();
 applyProductFilter();
 resetAllCardLabels();
 updateCartUI();
+
+/* If arriving from a "Wellness Combo" page (shop.html?combo=id1,id2,id3), add each item and open the cart */
+if(comboParam){
+  const comboIds = comboParam.split(',').map(s => s.trim()).filter(Boolean);
+  let addedAny = false;
+  comboIds.forEach(id => {
+    const product = PRODUCTS.find(p => p.id === id);
+    if(product && product.price !== null){
+      addToCart(id, 1);
+      addedAny = true;
+    }
+  });
+  if(addedAny){
+    showToast('Combo added to your cart');
+    openCart();
+  }
+}
 </script>
 </body>
 </html>
