@@ -1,6 +1,6 @@
 /* PrymCare Health — shared product catalogue for cart lookups (name, price, image by id) */
 const ALL_PRODUCTS = [
-  {id:"absorbent-c", name:"Forever Absorbent-C", price:319.38, img:"forever-absorbent-c"},
+  {id:"absorbent-c", name:"Forever Absorbent-C", price:0.38, img:"forever-absorbent-c"},
   {id:"fields-of-greens", name:"Forever Fields of Greens", price:240.59, img:"forever-fields-of-greens"},
   {id:"lycium-plus", name:"Forever Lycium Plus", price:564.60, img:"forever-lycium-plus"},
   {id:"forever-kids", name:"Forever Kids", price:277.58, img:"forever-kids"},
