@@ -8,14 +8,14 @@
 <meta name="keywords" content="DX4, Wellness Programs, Forever Living Ghana, buy DX4 Ghana, PrymCare Health">
 <meta name="author" content="PrymCare Health">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.prymcare.com/products/dx4.html">
+<link rel="canonical" href="https://www.prymcare.com/product/dx4.html">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PrymCare Health">
 <meta property="og:title" content="DX4 | PrymCare Health">
 <meta property="og:description" content="A comprehensive body transformation programme — contact us for current pricing and availability.">
 <meta property="og:image" content="https://www.prymcare.com/assets/logo.jpg">
-<meta property="og:url" content="https://www.prymcare.com/products/dx4.html">
+<meta property="og:url" content="https://www.prymcare.com/product/dx4.html">
 <meta property="og:locale" content="en_GH">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -755,7 +755,7 @@ footer a:hover{color:#fff;}
 .product-buy-row{display:flex; align-items:center; gap:12px; margin-top:14px; flex-wrap:wrap;}
 .product-buy-row .qty-stepper{flex-shrink:0;}
 .product-buy-row .qty-stepper button{width:38px; height:42px;}
-.product-buy-row .buy-now-btn{flex:1; min-width:180px; padding:13px 20px; font-size:14px;}
+.product-buy-row .add-cart-btn{flex:1; min-width:180px; padding:13px 20px; font-size:14px;}
 
 .product-info-section{margin-top:34px; padding-top:26px; border-top:1px solid var(--line);}
 .product-info-section h2{font-size:17px; margin-bottom:12px;}
@@ -781,7 +781,7 @@ footer a:hover{color:#fff;}
   "category": "Wellness Programs",
   "brand": {"@type": "Brand", "name": "Forever Living Products"},
   "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5", "reviewCount": "8"},
-  "offers":{"@type":"Offer","priceCurrency":"GHS","availability":"https://schema.org/InStock","url":"https://www.prymcare.com/products/dx4.html"}
+  "offers":{"@type":"Offer","priceCurrency":"GHS","availability":"https://schema.org/InStock","url":"https://www.prymcare.com/product/dx4.html"}
 }
 </script>
 <script type="application/ld+json">
@@ -792,7 +792,7 @@ footer a:hover{color:#fff;}
     {"@type":"ListItem","position":1,"name":"Home","item":"https://www.prymcare.com/"},
     {"@type":"ListItem","position":2,"name":"Shop","item":"https://www.prymcare.com/shop.html"},
     {"@type":"ListItem","position":3,"name":"Wellness Programs","item":"https://www.prymcare.com/shop.html?cat=programs"},
-    {"@type":"ListItem","position":4,"name":"DX4","item":"https://www.prymcare.com/products/dx4.html"}
+    {"@type":"ListItem","position":4,"name":"DX4","item":"https://www.prymcare.com/product/dx4.html"}
   ]
 }
 </script>
@@ -838,6 +838,10 @@ footer a:hover{color:#fff;}
     </nav>
     <div class="nav-cta">
       <a href="../contact.html" class="btn btn-ghost" style="padding:12px 20px;">Contact Us</a>
+      <button class="cart-btn" id="cartOpenBtn" aria-label="Open cart" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+      </button>
       <a href="../shop.html" class="btn btn-primary" style="padding:12px 22px;">Shop Now</a>
     </div>
     <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -1049,6 +1053,11 @@ footer a:hover{color:#fff;}
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
     Shop
   </a>
+<button class="qb-btn qb-cart" id="qbCartBtn" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+    Cart
+    <span class="qb-badge" id="qbBadge" style="display:none;">0</span>
+  </button>
 </nav>
 
 <div class="cookie-bar" id="cookieBar" role="dialog" aria-label="Cookie notice">
@@ -1059,7 +1068,224 @@ footer a:hover{color:#fff;}
   </div>
 </div>
 
-<script src="../assets/js/main.js"></script>
 
+<div class="overlay" id="overlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+  <div class="cart-head">
+    <h3>Your Cart</h3>
+    <button class="cart-close" id="cartCloseBtn" aria-label="Close cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot" id="cartFoot" style="display:none;">
+    <div class="cart-subtotal"><span>Subtotal</span><b id="cartSubtotal">₵0.00</b></div>
+    <button class="btn btn-primary btn-block" id="checkoutOpenBtn">Proceed to Checkout</button>
+  </div>
+</aside>
+
+<aside class="checkout-modal" id="checkoutModal" aria-label="Checkout">
+  <div class="checkout-head">
+    <h3>Checkout via WhatsApp</h3>
+    <button class="cart-close" id="checkoutCloseBtn" aria-label="Close checkout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+  </div>
+  <div class="checkout-body">
+    <div class="order-recap" id="orderRecap"></div>
+    <form id="checkoutForm" novalidate>
+      <div class="field"><label for="coName">Full name *</label><input type="text" id="coName" required autocomplete="name"></div>
+      <div class="field"><label for="coPhone">Phone / WhatsApp number *</label><input type="tel" id="coPhone" required autocomplete="tel" placeholder="e.g. 024 000 0000"></div>
+      <div class="field"><label for="coEmail">Email address</label><input type="email" id="coEmail" autocomplete="email"></div>
+      <div class="field"><label for="coAddress">Delivery address / area *</label><input type="text" id="coAddress" required placeholder="e.g. East Legon, Accra"></div>
+      <div class="field"><label for="coNotes">Order notes (optional)</label><textarea id="coNotes" placeholder="Any preferred delivery time, questions, etc."></textarea></div>
+      <button type="submit" class="btn btn-honey btn-block" id="sendOrderBtn">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.62 1.44 5.13L2 22l5.13-1.55a9.9 9.9 0 004.91 1.3h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+        Send Order on WhatsApp
+      </button>
+      <p class="checkout-note">Tapping "Send Order" opens WhatsApp with your itemised order and details pre-filled — just hit send. We reply personally to confirm price, delivery time and payment method.</p>
+    </form>
+  </div>
+</aside>
+
+<div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span id="toastMsg">Added to cart</span></div>
+
+<script src="../assets/js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const ALL_PRODUCTS = [{id:"absorbent-c", name:"Forever Absorbent-C", price:319.38, img:"forever-absorbent-c"},{id:"fields-of-greens", name:"Forever Fields of Greens", price:240.59, img:"forever-fields-of-greens"},{id:"lycium-plus", name:"Forever Lycium Plus", price:564.60, img:"forever-lycium-plus"},{id:"forever-kids", name:"Forever Kids", price:277.58, img:"forever-kids"},{id:"immublend", name:"Forever Immublend", price:430.33, img:"forever-immublend"},{id:"forever-daily", name:"Forever Daily", price:370.23, img:"forever-daily"},{id:"active-pro-b", name:"Active Pro-B", price:680.36, img:"forever-active-pro-b"},{id:"supergreens", name:"Forever Supergreens", price:712.73, img:"forever-supergreens"},{id:"nature-min", name:"Forever Nature Min", price:333.25, img:"forever-nature-min"},{id:"garcinia-plus", name:"Forever Garcinia Plus", price:564.60, img:"forever-garcinia-plus"},{id:"lite-ultra-vanilla", name:"Forever Lite Ultra (Vanilla)", price:564.60, img:"forever-lite-ultra-vanilla"},{id:"lite-ultra-chocolate", name:"Forever Lite Ultra (Chocolate)", price:564.60, img:"forever-lite-ultra-chocolate"},{id:"fast-break", name:"Forever Fast Break Bar", price:97.28, img:"forever-fast-break"},{id:"aloe-propolis-creme", name:"Aloe Propolis Cr\u00e9me", price:360.99, img:"forever-aloe-propolis-creme"},{id:"aloe-vera-gelly", name:"Aloe Vera Gelly", price:268.33, img:"forever-aloe-vera-gelly"},{id:"aloe-moisturizing-lotion", name:"Aloe Moisturizing Lotion", price:268.33, img:"forever-aloe-moisturizing-lotion"},{id:"avocado-soap", name:"Forever Avocado Face & Body Soap", price:125.02, img:"forever-avocado-soap"},{id:"aloe-body-lotion", name:"Aloe Body Lotion", price:420.66, img:"forever-aloe-body-lotion"},{id:"renewing-skin-creme", name:"Renewing Skin Cr\u00e9me", price:600.94, img:"forever-renewing-skin-creme"},{id:"aloe-lips", name:"Aloe Lips", price:64.72, img:"forever-aloe-lips"},{id:"bright-toothgel", name:"Forever Bright Toothgel", price:143.51, img:"forever-bright-toothgel"},{id:"ever-shield", name:"Aloe Ever-Shield Deodorant", price:134.26, img:"forever-ever-shield"},{id:"gentlemens-pride", name:"Gentlemen's Pride", price:277.58, img:"forever-gentlemens-pride"},{id:"hand-sanitizer", name:"Forever Hand Sanitizer", price:78.59, img:"forever-hand-sanitizer"},{id:"aloe-liquid-soap", name:"Aloe Liquid Soap", price:346.73, img:"forever-aloe-liquid-soap"},{id:"bee-honey", name:"Forever Bee Honey", price:324.00, img:"forever-bee-honey"},{id:"bee-pollen", name:"Forever Bee Pollen", price:277.58, img:"forever-bee-pollen"},{id:"bee-propolis", name:"Forever Bee Propolis", price:596.96, img:"forever-bee-propolis"},{id:"royal-jelly", name:"Forever Royal Jelly", price:601.58, img:"forever-royal-jelly"},{id:"garlic-thyme", name:"Garlic Thyme", price:342.49, img:"forever-garlic-thyme"},{id:"cardio-health", name:"Forever Cardio Health", price:636.21, img:"forever-cardio-health"},{id:"arctic-sea", name:"Forever Arctic Sea", price:574.04, img:"forever-arctic-sea"},{id:"forever-calcium", name:"Forever Calcium", price:453.45, img:"forever-calcium"},{id:"active-ha", name:"Forever Active HA", price:629.32, img:"forever-active-ha"},{id:"forever-move", name:"Forever Move", price:1154.81, img:"forever-move"},{id:"aloe-heat-lotion", name:"Aloe Heat Lotion", price:268.33, img:"forever-aloe-heat-lotion"},{id:"forever-freedom", name:"Forever Freedom", price:675.74, img:"forever-freedom"},{id:"ivision", name:"Forever iVision", price:669.61, img:"forever-ivision"},{id:"b12-plus", name:"Forever B12 Plus", price:286.82, img:"forever-b12-plus"},{id:"argi-sticks", name:"Forever Argi+", price:1402.15, img:"forever-argi+"},{id:"forever-focus", name:"Forever Focus", price:1545.65, img:"forever-focus"},{id:"fab-drink", name:"FAB Energy Drink", price:87.84, img:"forever-fab-drink"},{id:"multi-maca", name:"Forever Multi-Maca", price:495.25, img:"forever-multi-maca"},{id:"vitolize-men", name:"Forever Vitolize (Men)", price:574.04, img:"forever-vitolize-men"},{id:"vitolize-women", name:"Forever Vitolize (Women)", price:587.71, img:"forever-vitolize-women"},{id:"aloe-vera-gel", name:"Forever Aloe Vera Gel", price:471.94, img:"forever-aloe-vera-gel"},{id:"aloe-berry-nectar", name:"Forever Aloe Berry Nectar", price:471.94, img:"forever-aloe-berry-nectar"},{id:"blossom-tea", name:"Aloe Blossom Herbal Tea", price:334.91, img:"forever-blossom-tea"},{id:"aloe-gel-mini", name:"Aloe Vera Gel Mini", price:150.02, img:"forever-aloe-gel-mini"},{id:"vital5-gel", name:"Vital 5 with Aloe Vera Gel", price:4627.71, img:"forever-vital5-gel"},{id:"vital5-nectar", name:"Vital 5 with Aloe Berry Nectar", price:4627.71, img:"forever-vital5-nectar"},{id:"vital5-bnp", name:"Vital 5 with Bee Honey & Propolis", price:4627.71, img:"forever-vital5-bnp"},{id:"vital5-freedom", name:"Vital 5 with Forever Freedom", price:4627.71, img:"forever-vital5-freedom"},{id:"f15-beginner-vanilla", name:"F15 Beginner Pack (Vanilla)", price:2711.83, img:"forever-f15-beginner-vanilla"},{id:"f15-beginner-chocolate", name:"F15 Beginner Pack (Chocolate)", price:2711.83, img:"forever-f15-beginner-chocolate"},{id:"f15-intermediate-vanilla", name:"F15 Intermediate Pack (Vanilla)", price:2711.83, img:"forever-f15-intermediate-vanilla"},{id:"f15-intermediate-chocolate", name:"F15 Intermediate Pack (Chocolate)", price:2711.83, img:"forever-f15-intermediate-chocolate"},{id:"f15-advance-vanilla", name:"F15 Advanced Pack (Vanilla)", price:2711.83, img:"forever-f15-advance-vanilla"},{id:"f15-advance-chocolate", name:"F15 Advanced Pack (Chocolate)", price:2230.64, img:"f15-advance-chocolate"},{id:"c9-vanilla", name:"C9 (Clean 9) Vanilla", price:2230.64, img:"forever-c9-vanilla"},{id:"c9-chocolate", name:"C9 (Clean 9) Chocolate", price:7191.22, img:"forever-c9-chocolate"},{id:"start-journey", name:"Start Your Journey Pack", price:2466.57, img:"forever-start-journey"}];
+  function money(n){ return '₵' + n.toFixed(2); }
+  function findProduct(id){ return ALL_PRODUCTS.find(p => p.id === id); }
+
+  let cart = {};
+  try{ cart = JSON.parse(localStorage.getItem('prymcare_cart') || '{}'); }catch(e){ cart = {}; }
+  function saveCart(){ try{ localStorage.setItem('prymcare_cart', JSON.stringify(cart)); }catch(e){} }
+
+  function addToCart(id, qty){
+    if(!cart[id]) cart[id] = {qty: 0};
+    cart[id].qty += qty;
+    saveCart();
+    updateCartUI();
+  }
+  function changeCartQty(id, delta){
+    if(!cart[id]) return;
+    cart[id].qty += delta;
+    if(cart[id].qty <= 0) delete cart[id];
+    saveCart();
+    updateCartUI();
+  }
+  function removeFromCart(id){
+    delete cart[id];
+    saveCart();
+    updateCartUI();
+  }
+  function cartCount(){ return Object.values(cart).reduce((s,i) => s + i.qty, 0); }
+  function cartSubtotal(){
+    return Object.entries(cart).reduce((sum, [id, item]) => {
+      const p = findProduct(id);
+      return p ? sum + p.price * item.qty : sum;
+    }, 0);
+  }
+
+  const cartBadge = document.getElementById('cartBadge');
+  const qbBadge = document.getElementById('qbBadge');
+  const cartItemsEl = document.getElementById('cartItems');
+  const cartFoot = document.getElementById('cartFoot');
+  const cartSubtotalEl = document.getElementById('cartSubtotal');
+
+  function updateCartUI(){
+    const count = cartCount();
+    [cartBadge, qbBadge].forEach(el => { if(el){ el.textContent = count; el.style.display = count > 0 ? 'flex' : 'none'; } });
+
+    const entries = Object.entries(cart);
+    if(entries.length === 0){
+      cartItemsEl.innerHTML = `<div class="cart-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><p>Your cart is empty.<br>Browse products and add a few favourites.</p></div>`;
+      cartFoot.style.display = 'none';
+    } else {
+      cartItemsEl.innerHTML = entries.map(([id, item]) => {
+        const p = findProduct(id);
+        if(!p) return '';
+        return `
+        <div class="cart-item" data-id="${id}">
+          <div class="cart-item-media"><img src="../assets/products/${p.img}.svg" alt="${p.name}"></div>
+          <div class="cart-item-info">
+            <h4>${p.name}</h4>
+            <div class="price">${money(p.price)} × ${item.qty} = <strong>${money(p.price*item.qty)}</strong></div>
+            <div class="cart-item-controls">
+              <div class="qty-stepper">
+                <button type="button" class="qty-minus" aria-label="Decrease quantity">−</button>
+                <span class="qty-val">${item.qty}</span>
+                <button type="button" class="qty-plus" aria-label="Increase quantity">+</button>
+              </div>
+              <button type="button" class="cart-item-remove">Remove</button>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+      cartFoot.style.display = 'block';
+      cartSubtotalEl.textContent = money(cartSubtotal());
+
+      cartItemsEl.querySelectorAll('.cart-item').forEach(row => {
+        const id = row.dataset.id;
+        row.querySelector('.qty-minus').addEventListener('click', () => changeCartQty(id, -1));
+        row.querySelector('.qty-plus').addEventListener('click', () => changeCartQty(id, 1));
+        row.querySelector('.cart-item-remove').addEventListener('click', () => removeFromCart(id));
+      });
+    }
+  }
+
+  const overlay = document.getElementById('overlay');
+  const cartDrawer = document.getElementById('cartDrawer');
+  const checkoutModal = document.getElementById('checkoutModal');
+  function anyPanelOpen(){ return cartDrawer.classList.contains('show') || checkoutModal.classList.contains('show'); }
+  function showOverlay(){ overlay.classList.add('show'); document.body.style.overflow='hidden'; }
+  function hideOverlayIfNoneOpen(){ if(!anyPanelOpen()){ overlay.classList.remove('show'); document.body.style.overflow=''; } }
+  function openCart(){ cartDrawer.classList.add('show'); showOverlay(); }
+  function closeCart(){ cartDrawer.classList.remove('show'); hideOverlayIfNoneOpen(); }
+
+  function renderOrderRecap(){
+    const rows = Object.entries(cart).map(([id, item]) => {
+      const p = findProduct(id);
+      if(!p) return '';
+      return `<div class="order-recap-row"><span>${p.name} × ${item.qty}</span><span>${money(p.price*item.qty)}</span></div>`;
+    }).join('');
+    document.getElementById('orderRecap').innerHTML = rows + `<div class="order-recap-row total"><span>Total</span><span>${money(cartSubtotal())}</span></div>`;
+  }
+  function openCheckout(){
+    if(cartCount() === 0) return;
+    renderOrderRecap();
+    checkoutModal.classList.add('show');
+    showOverlay();
+  }
+  function closeCheckout(){ checkoutModal.classList.remove('show'); hideOverlayIfNoneOpen(); }
+
+  document.getElementById('cartOpenBtn').addEventListener('click', openCart);
+  const qbCartBtn = document.getElementById('qbCartBtn');
+  if(qbCartBtn) qbCartBtn.addEventListener('click', openCart);
+  document.getElementById('cartCloseBtn').addEventListener('click', closeCart);
+  document.getElementById('checkoutOpenBtn').addEventListener('click', () => { closeCart(); openCheckout(); });
+  document.getElementById('checkoutCloseBtn').addEventListener('click', closeCheckout);
+  overlay.addEventListener('click', () => { closeCart(); closeCheckout(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape'){ closeCart(); closeCheckout(); } });
+
+  const toast = document.getElementById('toast');
+  let toastTimer;
+  function showToast(msg){
+    document.getElementById('toastMsg').textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+  }
+
+  const qtyVal = document.querySelector('.product-buy-row .qty-val');
+  let localQty = qtyVal ? (parseInt(qtyVal.textContent, 10) || 1) : 1;
+  const minus = document.querySelector('.product-buy-row .qty-minus');
+  const plus = document.querySelector('.product-buy-row .qty-plus');
+  if(minus) minus.addEventListener('click', () => { localQty = Math.max(1, localQty - 1); qtyVal.textContent = localQty; });
+  if(plus) plus.addEventListener('click', () => { localQty = Math.min(20, localQty + 1); qtyVal.textContent = localQty; });
+
+  const addBtn = document.getElementById('addToCartBtn');
+  if(addBtn) addBtn.addEventListener('click', () => {
+    addToCart('dx4', localQty);
+    showToast("DX4" + ' added to cart');
+  });
+
+  document.getElementById('checkoutForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+
+    const name = document.getElementById('coName').value.trim();
+    const phone = document.getElementById('coPhone').value.trim();
+    const email = document.getElementById('coEmail').value.trim();
+    const address = document.getElementById('coAddress').value.trim();
+    const notes = document.getElementById('coNotes').value.trim();
+
+    const lines = [];
+    lines.push('Hi PrymCare Health, I would like to place an order:');
+    lines.push('');
+    Object.entries(cart).forEach(([id, item]) => {
+      const p = findProduct(id);
+      if(p) lines.push('- ' + p.name + ' x' + item.qty + ' = ' + money(p.price*item.qty));
+    });
+    lines.push('');
+    lines.push('TOTAL: ' + money(cartSubtotal()));
+    lines.push('');
+    lines.push('Name: ' + name);
+    lines.push('Phone: ' + phone);
+    if(email) lines.push('Email: ' + email);
+    lines.push('Delivery Address: ' + address);
+    if(notes) lines.push('Notes: ' + notes);
+
+    const message = encodeURIComponent(lines.join('\n'));
+    window.open('https://wa.me/233544003712?text=' + message, '_blank', 'noopener');
+
+    showToast('Order ready — check WhatsApp to send it!');
+    cart = {};
+    saveCart();
+    updateCartUI();
+    form.reset();
+    setTimeout(() => closeCheckout(), 600);
+  });
+
+  updateCartUI();
+});
+</script>
 </body>
 </html>
