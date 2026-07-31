@@ -1,6 +1,6 @@
 /* PrymCare Health — shared product catalogue for cart lookups (name, price, image by id) */
 const ALL_PRODUCTS = [
-  {id:"absorbent-c", name:"Forever Absorbent-C", price:0.38, img:"forever-absorbent-c"},
+  {id:"absorbent-c", name:"Forever Absorbent-C", price:319.38, img:"forever-absorbent-c"},
   {id:"fields-of-greens", name:"Forever Fields of Greens", price:240.59, img:"forever-fields-of-greens"},
   {id:"lycium-plus", name:"Forever Lycium Plus", price:564.60, img:"forever-lycium-plus"},
   {id:"forever-kids", name:"Forever Kids", price:277.58, img:"forever-kids"},
@@ -57,7 +57,7 @@ const ALL_PRODUCTS = [
   {id:"f15-beginner-chocolate", name:"F15 Beginner Pack (Chocolate)", price:2711.83, img:"forever-f15-beginner-chocolate"},
   {id:"f15-intermediate-vanilla", name:"F15 Intermediate Pack (Vanilla)", price:2711.83, img:"forever-f15-intermediate-vanilla"},
   {id:"f15-intermediate-chocolate", name:"F15 Intermediate Pack (Chocolate)", price:2711.83, img:"forever-f15-intermediate-chocolate"},
-  {id:"f15-advance-vanilla", name:"F15 Advanced Pack (Vanilla)", price:2711.83, img:"forever-f15-advance-vanilla"},
+  {id:"f15-advance-vanilla", name:"F15  (Vanilla)", price:2711.83, img:"forever-f15-advance-vanilla"},
   {id:"f15-advance-chocolate", name:"F15 Advanced Pack (Chocolate)", price:2230.64, img:"f15-advance-chocolate"},
   {id:"c9-vanilla", name:"C9 (Clean 9) Vanilla", price:2230.64, img:"forever-c9-vanilla"},
   {id:"c9-chocolate", name:"C9 (Clean 9) Chocolate", price:7191.22, img:"forever-c9-chocolate"},
